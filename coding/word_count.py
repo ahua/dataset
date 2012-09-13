@@ -30,7 +30,7 @@ def main(datafile, word_len=2):
   lines = fp.readlines()
   d = {}
   for li in lines:
-    for word in parse_line(li):
+    for word in parse_line(li, word_len):
       d[word] = d[word] + 1 if d.has_key(word) else 1
   return d
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
   
   argc = len(sys.argv)
   if argc == 3:
-    d = main(sys.argv[1], sys.argv[2])
+    d = main(sys.argv[1], int(sys.argv[2]))
   elif argc == 2:
     d = main(sys.argv[1])
   else:
