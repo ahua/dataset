@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
   t = 0
   for w in s:
-    print '"%s",'%w,
+    print 'u"%s",'%w,
     t = t + 1
     if t % 25 == 0:
       print

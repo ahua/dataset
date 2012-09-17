@@ -6,10 +6,11 @@ import datetime
 import string
 import codecs
 
+from cncharset import cn_char_dict
  
 CHANESE = u"！”#￥%&‘（）*+，-。/：；《=》？@【、】……——`『』|～"
 ASCII = unicode(string.whitespace + string.printable)
-OTHERS = u"¤· "
+OTHERS = u"¤· “”"
 
 DEL_SET = CHANESE + ASCII + OTHERS
 
@@ -39,6 +40,11 @@ def print_dict(d):
   for k in l:
     print k.encode('utf8'), d[k]
 
+"""
+usage:
+$ prog file [wordlen]
+"""
+
 if __name__ == "__main__":
   start = datetime.datetime.now()
   
@@ -51,7 +57,12 @@ if __name__ == "__main__":
     d = main("test.in")
 
   print_dict(d)
-
+  
+  for k in d.iterkeys():
+    if len(k) > 1: 
+      break
+    if k not in cn_char_dict:
+      print >> sys.stderr, k.encode("utf8"),
   end = datetime.datetime.now()
 
   print >> sys.stderr, "Start at:", start 
