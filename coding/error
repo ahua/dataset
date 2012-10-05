@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./word_count.py", line 59, in <module>
+    print_dict(d)
+  File "./word_count.py", line 41, in print_dict
+    print k.encode('utf8'), d[k]
+IOError: [Errno 32] Broken pipe
